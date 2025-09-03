@@ -1,12 +1,17 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET, SUPABASE_SERVICE_ROLE_KEY } from '$env/static/private';
+import { JWT_SECRET } from '$env/static/private';
 import { createClient } from '@supabase/supabase-js';
 import { PUBLIC_SUPABASE_URL } from '$env/static/public';
 import type { User } from '@supabase/supabase-js';
 import { checkRateLimit, type RateLimitType } from './rateLimit';
 
+// Environment variables with fallbacks
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+
 // Create Supabase admin client for server-side operations
-const supabaseAdmin = createClient(PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+const supabaseAdmin = SUPABASE_SERVICE_ROLE_KEY 
+  ? createClient(PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+  : null;
 
 /**
  * Check if user/IP is rate limited for JWT operations
@@ -126,6 +131,11 @@ export function verifyFlarumJWT(token: string): FlarumSSOPayload | null {
  */
 export async function getFlarumUserData(userId: string): Promise<FlarumUserData | null> {
   try {
+    if (!supabaseAdmin) {
+      console.error('Supabase admin client not initialized - SUPABASE_SERVICE_ROLE_KEY missing');
+      return null;
+    }
+
     const { data: userResponse, error } = await supabaseAdmin.auth.admin.getUserById(userId);
     
     if (error || !userResponse) {
@@ -164,6 +174,11 @@ export async function getFlarumUserData(userId: string): Promise<FlarumUserData 
  */
 export async function createJWTFromSession(sessionToken: string): Promise<string | null> {
   try {
+    if (!supabaseAdmin) {
+      console.error('Supabase admin client not initialized - SUPABASE_SERVICE_ROLE_KEY missing');
+      return null;
+    }
+
     const { data: { user }, error } = await supabaseAdmin.auth.getUser(sessionToken);
     
     if (error || !user) {
