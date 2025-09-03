@@ -1,0 +1,313 @@
+/*
+* Barebones V3
+* Copyright 2019 Steve Cochran
+*
+* Based of Skeleton by Dave Gamache
+*
+* Free to use under the MIT license.
+*/
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Media Breakpoints
+- Variables
+- Grid
+- Base Styles
+- Typography
+- Links
+- Buttons
+- Forms
+- Lists
+- Code
+- Tables
+- Spacing
+- Utilities
+- Clearing
+- Media Queries
+*/
+
+/* ENV Variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Media breakpoint variables for use in media queries
+* 	Note: this section is currently commented out pending release of 
+* 	final CSS env() spec
+*  Breakpoints based on 
+*	 https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
+* 
+*/
+
+
+
+/* CSS Variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* CSS Grid depends much more on CSS than HTML, so there is less boilerplate
+	 than with skeleton. Only basic 1-4 column grids are included.
+	 Any additional needs should be made using custom CSS directives */
+
+
+.grid-container {
+  position: relative;
+  width: var(--grid-width-mobile);
+  max-width: var(--grid-max-width);
+	margin: 0 auto;
+	/* padding: 20px; */
+  display: grid;
+	align-items: center;
+	grid-gap: 20px;
+  gap: 20px;
+	
+	/* by default use min 200px wide columns auto-fit into width */
+	grid-template-columns: minmax(200px, 1fr);
+}
+.grid-container.u-align-top {
+	align-items: top;
+}
+.wp-block-columns {
+  max-width: var(--grid-max-width);
+  width: var(--grid-width);
+  margin: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .span-1 {
+    grid-column: 1 / 1 !important;
+  }
+  .span-2 {
+    grid-column: 2 / 4 !important;
+  }
+  .grid-container {
+	width: var(--grid-width);
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+	.md-span-2 {
+		grid-column: span 2;
+	}
+}
+
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+/* grids to 3 columns above mobile sizes */
+@media (min-width: 900px) {
+	.grid-container {
+		grid-template-columns: repeat(3, 1fr);
+		padding: 20px 0;
+	}
+	
+	/* basic grids */
+	.grid-container.tenths {
+		grid-template-columns: repeat(10, 1fr);
+	}
+	.grid-container.ninths {
+		grid-template-columns: repeat(9, 1fr);
+	}
+	.grid-container.eighths {
+		grid-template-columns: repeat(8, 1fr);
+	}
+	.grid-container.sevenths {
+		grid-template-columns: repeat(7, 1fr);
+	}
+	.grid-container.sixths {
+		grid-template-columns: repeat(6, 1fr);
+	}
+	.grid-container.fifths {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.grid-container.quarters {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.grid-container.thirds {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.grid-container.halves {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.grid-container.full {
+		grid-template-columns: 1fr;
+    max-width: 1000px;
+  }
+  .grid-container.auto {
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  }
+  
+
+  .grid-center {
+    width: 60%;
+  }
+	
+}
+
+/* Grid Options on Small Screens */
+@media screen and (max-width: 900px) {
+  .sm-fifths {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.sm-quarters {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.sm-thirds {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.sm-halves {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.sm-full {
+		grid-template-columns: 1fr;
+	}
+}
+/* Grid Options on Medium Screens */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .md-fifths {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.md-quarters {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.md-thirds {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.md-halves {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.md-full {
+		grid-template-columns: 1fr;
+	}
+}
+/* Grid Options on Medium Large Screens */
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .lg-fifths {
+		grid-template-columns: repeat(5, 1fr) !important;
+	}
+	.lg-quarters {
+		grid-template-columns: repeat(4, 1fr) !important;
+	}
+	.lg-thirds {
+		grid-template-columns: repeat(3, 1fr) !important;
+	}
+	.lg-halves {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+}
+
+/* Reorganizes images to come before text on mobile. Simply add .grid-picture to image container div. */
+@media screen and (max-width: 900px) {
+  .sm-grid-row-1 {
+    grid-row: 1;
+  }
+  .sm-grid-row-2 {
+    grid-row: 2;
+  }
+  .sm-grid-row-3 {
+    grid-row: 3;
+  }
+  .sm-grid-row-4 {
+    grid-row: 4;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .lg-grid-row-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .lg-grid-row-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .lg-grid-row-3 {
+    grid-column: 3;
+  }
+  .lg-grid-row-4 {
+    grid-column: 4;
+  }
+}
+
+
+
+
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+.u-align-left {
+	text-align: left; }
+.u-align-center {
+	text-align: center; }
+.u-align-right {
+  text-align: right; }
+.u-align-top {
+  align-items: start;
+}
+
+.u-w-100 {
+  width: 100%;
+}
+.u-w-50 {
+  width: 50%;
+}
+.u-vw-100 {
+  width: 100vw;
+}
+
+/* Misc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* Clearing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile (default point when grid becomes active) */
+@media (min-width: 600px) {
+  
+}
+
+/* Larger than phablet */
+@media (min-width: 900px) {
+  
+}
+
+/* Larger than tablet */
+@media (min-width: 1200px) {
+  
+}
+
+

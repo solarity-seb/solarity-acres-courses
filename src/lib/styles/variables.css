@@ -1,0 +1,137 @@
+/* 🧱 Base (shared) variables: don't change between light/dark */
+:root {
+	--success: #00b900;
+	--light: #EEEEE4;
+	--light-transparent: rgba(227, 242, 253, 0.6);
+	--dark-transparent: rgba(30, 58, 95, 0.6);
+	--accent-transparent: #A3C4871b;
+	--dark: #1E2F2A;
+	--grey: #191919;
+	--danger: rgb(169, 23, 23);
+	--card-color: #E3F2FD;
+}
+
+/* 🌞 Default light theme (fallback + explicit) */
+:root:not([color-mode]),
+:root[color-mode="light"] {
+	--bg: var(--light);
+	--bg2: #dadac4;
+	--bg3: var(--dark);
+	--text-color: var(--dark);
+	--accent: #A3C487;
+	--accent-2: #bedaa5;
+	--accent-3: #A3C487;
+	--bg-gradient: linear-gradient(20deg, #cccefa 15.71%, #eff0ff 65.05%);
+
+	--grey-100: color-mix(in srgb, var(--text-color) 10%, white);
+	--grey-200: color-mix(in srgb, var(--text-color) 20%, white);
+	--grey-300: color-mix(in srgb, var(--text-color) 30%, white);
+	--grey-400: color-mix(in srgb, var(--text-color) 40%, white);
+	--grey-500: color-mix(in srgb, var(--text-color) 50%, white);
+	--grey-600: color-mix(in srgb, var(--text-color) 60%, white);
+	--grey-700: color-mix(in srgb, var(--text-color) 70%, white);
+	--grey-800: color-mix(in srgb, var(--text-color) 80%, white);
+	--grey-900: color-mix(in srgb, var(--text-color) 90%, white);
+}
+
+/* 🌚 Dark theme overrides */
+:root[color-mode="dark"] {
+	--bg:  var(--dark);
+	--bg2: #1c2925;
+	--bg3: #0f0f1c;
+	--text-color: var(--light);
+	--grey: #bebeb2;
+	--accent: #A3C487;
+	--accent-2: #bedaa5;
+	--accent-3: #A3C487;
+	--bg-gradient: linear-gradient(20deg, var(--dark) 15.71%, var(--grey-200) 65.05%);
+
+	--grey-100: color-mix(in srgb, var(--grey) 10%, black);
+	--grey-200: color-mix(in srgb, var(--grey) 20%, black);
+	--grey-300: color-mix(in srgb, var(--grey) 30%, black);
+	--grey-400: color-mix(in srgb, var(--grey) 40%, black);
+	--grey-500: color-mix(in srgb, var(--grey) 50%, black);
+	--grey-600: color-mix(in srgb, var(--grey) 60%, black);
+	--grey-700: color-mix(in srgb, var(--grey) 70%, black);
+	--grey-800: color-mix(in srgb, var(--grey) 80%, black);
+	--grey-900: color-mix(in srgb, var(--grey) 90%, black);
+}
+
+	
+
+	:root {
+		/* Variables */
+		--cubic: cubic-bezier( 0.165, 0.84, 0.44, 1 ) ;
+		--cubic2: cubic-bezier(0.65, 0.05, 0, 1);
+
+		/* Barebones Grid */
+		--grid-width: 80%;
+		--grid-width-mobile: 90%;
+		--grid-max-width: 1200px;
+
+		/* Buttons */
+		--btn-border-radius: 6px;
+		--btn-border-width: 2.5px;
+		--btn-padding: 0.5rem 6% 0.5rem 6%;
+		--btn-font-weight: 400;
+		--btn-letter-spacing: -0.03em;
+		--btn-text-transform: none; /* Uppercase or None */
+		--btn-margin: 0;
+		
+		/* Sections */
+		--section-padding: 6em 0%;
+		--section-padding-mobile: 4em 0%;
+
+		/* Header */
+		--header-link-color: var(--dark); /* --light or --dark probably */
+		--header-link-color-hover: var(--accent); /* --accent probably */
+		--header-link-size: 1.2rem;
+		--header-link-size-mobile: 2rem;
+		--header-link-padding-mobile: 1.4rem;
+		--site-logo-header-width: 200px;
+		--site-logo-footer-width: 200px;
+
+		/* Cards */
+		--card-padding: 20px 10px;
+
+
+		/* Typography */
+		--base-font-size: 1rem;
+		--scale: 1.3;
+		--heading-letter-spacing: -0.05em;
+		--body-letter-spacing: -0.02em;
+		--heading-line-height: 0.9;
+		--heading-margins: 1.2rem;
+		--body-line-height: 1.3;
+		--paragraph-margin-bottom: 1rem;
+		--font1: "Josefin Sans", 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+		--font2: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+		--font-serif: 'Instrument Serif', serif;
+
+		--text-xs: calc(var(--base-font-size) - 0.2rem);
+    	--text-sm: calc(var(--base-font-size));
+    	--text-md: calc(var(--base-font-size) * var(--scale));
+    	--text-lg: calc(var(--base-font-size) * var(--scale) * var(--scale));
+		--text-xl: calc(var(--base-font-size) * var(--scale) * var(--scale) * var(--scale));
+    	--text-xxl: calc(var(--base-font-size) * var(--scale) * var(--scale) * var(--scale) * var(--scale));
+
+		/* Misc */
+		--main-border-width: 2px;
+		--main-border: var(--main-border-width) solid var(--text-color);
+		--main-border-light: var(--main-border-width) solid var(--light);
+		--main-border-dark: var(--main-border-width) solid var(--dark);
+		--main-border-accent: var(--main-border-width) solid var(--accent);
+		--main-border-grey: var(--main-border-width) solid var(--grey-500);
+	}
+	@media screen and (min-width: 900px) {
+		:root {
+			--base-font-size: 1.2rem;
+			--scale: 1.4;
+		}
+	}
+	@media screen and (min-width: 1300px) {
+		:root {
+			--base-font-size: 1.2rem;
+			--scale: 1.5;
+		}
+	}
