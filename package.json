@@ -34,6 +34,8 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.882.0",
+		"@aws-sdk/s3-request-presigner": "^3.882.0",
 		"@supabase/ssr": "^0.6.1",
 		"@supabase/supabase-js": "^2.54.0",
 		"@types/jsonwebtoken": "^9.0.10",

@@ -1,0 +1,15 @@
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "PUT", "POST", "DELETE", "HEAD"],
+    "AllowedOrigins": [
+      "http://localhost:5173",
+      "http://localhost:4173",
+      "https://solarity-acres-courses.vercel.app",
+      "https://solarity.farm",
+      "https://*.vercel.app"
+    ],
+    "ExposeHeaders": ["ETag", "x-amz-request-id"],
+    "MaxAgeSeconds": 3000
+  }
+]
